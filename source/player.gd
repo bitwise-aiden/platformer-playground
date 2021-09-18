@@ -46,9 +46,18 @@ func _physics_process(delta: float) -> void:
 	
 	velocity += self.__jump_velocity
 	
+	
+	var previous_position: Vector2 = self.position
+	
 	var collision: KinematicCollision2D = self.move_and_collide(velocity)
-	if collision && collision.normal == Vector2.UP: 
-		self.__on_ground = true
+	if collision:
+		if collision.normal == Vector2.UP:
+			self.__on_ground = true
+		else:
+			var position_delta: Vector2 = previous_position - self.position
+			var remaining_y = velocity.y - position_delta.y
+			
+			self.move_and_collide(Vector2(0.0, remaining_y))
 	
 	self.__handle_animation()
 
