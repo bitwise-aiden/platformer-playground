@@ -8,91 +8,15 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Reference",
-"class": "BaseTask",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/base_task.gd"
-}, {
-"base": "Reference",
-"class": "CommandData",
-"language": "GDScript",
-"path": "res://addons/gift/util/cmd_data.gd"
-}, {
-"base": "Reference",
-"class": "CommandInfo",
-"language": "GDScript",
-"path": "res://addons/gift/util/cmd_info.gd"
-}, {
-"base": "Reference",
-"class": "CurrentQueue",
-"language": "GDScript",
-"path": "res://source/helpers/current_queue.gd"
-}, {
-"base": "Reference",
-"class": "Gift",
-"language": "GDScript",
-"path": "res://addons/gift/gift_node.gd"
-}, {
-"base": "Node",
-"class": "ImageCache",
-"language": "GDScript",
-"path": "res://addons/gift/util/image_cache.gd"
-}, {
-"base": "Reference",
-"class": "PlayerInput",
-"language": "GDScript",
-"path": "res://source/helpers/player_input.gd"
-}, {
-"base": "Reference",
-"class": "SenderData",
-"language": "GDScript",
-"path": "res://addons/gift/util/sender_data.gd"
-}, {
-"base": "Reference",
-"class": "Task",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/task.gd"
-}, {
-"base": "Reference",
-"class": "TaskQueue",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/task_queue.gd"
-} ]
-_global_script_class_icons={
-"BaseTask": "",
-"CommandData": "",
-"CommandInfo": "",
-"CurrentQueue": "",
-"Gift": "",
-"ImageCache": "",
-"PlayerInput": "",
-"SenderData": "",
-"Task": "",
-"TaskQueue": ""
-}
-
 [application]
 
-config/name="godot-template"
+config/name="platformer-playground"
 run/main_scene="res://source/main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 WebBuild="*res://source/autoloads/web_build.gd"
-Globals="*res://source/autoloads/globals.gd"
-Event="*res://source/autoloads/event.gd"
-FileManager="*res://source/autoloads/file_manager.gd"
-SettingsManager="*res://source/autoloads/settings_manager.gd"
-Logger="*res://source/autoloads/logger.gd"
-Time="*res://source/autoloads/time.gd"
-PhysicsTime="*res://source/autoloads/physics_time.gd"
-SceneManager="*res://source/autoloads/scene_manager.tscn"
-TaskManager="*res://source/autoloads/task_manager.gd"
-AudioManager="*res://source/autoloads/audio_manager.gd"
-InputManager="*res://source/autoloads/input_manager.gd"
-DebugManager="*res://source/autoloads/debug_manager.gd"
 
 [display]
 
@@ -104,11 +28,40 @@ window/size/test_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
-[editor_plugins]
+[input]
 
-enabled=PoolStringArray( "velopbot" )
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true
