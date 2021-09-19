@@ -8,6 +8,34 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "InputBuffer",
+"language": "GDScript",
+"path": "res://source/utils/input_buffer.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://source/player/player.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "PlayerAnimation",
+"language": "GDScript",
+"path": "res://source/player/animation.gd"
+}, {
+"base": "Node",
+"class": "PlayerInput",
+"language": "GDScript",
+"path": "res://source/player/input.gd"
+} ]
+_global_script_class_icons={
+"InputBuffer": "",
+"Player": "",
+"PlayerAnimation": "",
+"PlayerInput": ""
+}
+
 [application]
 
 config/name="platformer-playground"
