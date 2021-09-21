@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 
 # Public methods
 
-
 func is_jump() -> bool: 
 	return self.__jump_buffer.triggered()
 
