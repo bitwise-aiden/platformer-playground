@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://source/player/input.gd" type="Script" id=1]
 [ext_resource path="res://source/player/animation.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://assets/art/player/idle.png" type="Texture" id=4]
 [ext_resource path="res://source/player/player.gd" type="Script" id=5]
 [ext_resource path="res://assets/art/player/jump.png" type="Texture" id=6]
+[ext_resource path="res://source/player/collision.gd" type="Script" id=7]
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 2.5
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -103,6 +107,14 @@ extents = Vector2( 20, 40 )
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 5 )
 
+[node name="collision" type="Node2D" parent="."]
+script = ExtResource( 7 )
+ground_offset = Vector2( 0, 40 )
+wall_left_offest = Vector2( -20, 0 )
+wall_right_offset = Vector2( 20, 0 )
+collision_area = SubResource( 21 )
+collision_layer = 1
+
 [node name="input" type="Node" parent="."]
 script = ExtResource( 1 )
 
@@ -113,5 +125,5 @@ animation = "jump"
 frame = 1
 script = ExtResource( 2 )
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 20 )
