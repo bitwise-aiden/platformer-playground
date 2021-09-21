@@ -10,16 +10,16 @@ var is_move: Dependency = Dependency.new(false)
 
 func _physics_process(_delta: float) -> void:
 	self.flip_h = self.direction.value == -1
-	
+
 	var state = [
 		self.on_ground.value,
 		self.is_move.value
 	]
-	
+
 	match state:
-		[true, true]: 
+		[true, true]:
 			self.play("move")
-		[false, ..]: 
+		[false, ..]:
 			self.play("jump")
 		_:
 			self.play("idle")

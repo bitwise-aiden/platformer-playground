@@ -25,16 +25,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	self.__handle_jump()
-	
+
 	var velocity: Vector2 = self.__input.movement_horizontal() * self.speed
-	
+
 	if !self.__collision.on_ground():
 		self.__jump_velocity += Vector2.DOWN * self.gravity
-	
+
 	velocity += self.__jump_velocity
-	
+
 	var previous_position: Vector2 = self.position
-	
+
 	var collision: KinematicCollision2D = self.move_and_collide(velocity)
 	if collision && collision.normal.x != 0.0:
 		var position_delta: Vector2 = previous_position - self.position
@@ -45,11 +45,11 @@ func _physics_process(delta: float) -> void:
 
 # Private methods
 
-func __handle_jump() -> void: 
+func __handle_jump() -> void:
 	if !self.__collision.on_ground():
 		return
-	
+
 	self.__jump_velocity = Vector2.ZERO
-	
-	if self.__input.is_jump(): 
+
+	if self.__input.is_jump():
 		self.__jump_velocity = Vector2.UP * self.jump_force

@@ -32,30 +32,30 @@ func on_ground() -> bool:
 	return self.__on_ground
 
 
-func on_wall() -> bool: 
+func on_wall() -> bool:
 	return self.__on_wall
 
 
-func on_wall_left() -> bool: 
+func on_wall_left() -> bool:
 	return self.__on_wall_left
 
 
-func on_wall_right() -> bool: 
+func on_wall_right() -> bool:
 	return self.__on_wall_right
 
 
 # Private methods
 
-func __check_collision(offset: Vector2) -> bool: 
+func __check_collision(offset: Vector2) -> bool:
 	var params = Physics2DShapeQueryParameters.new()
-	params.set_shape(self.collision_area) 
+	params.set_shape(self.collision_area)
 	params.transform = Transform2D(
-		0.0, 
+		0.0,
 		self.player_position.value + offset
 	)
 	params.collision_layer = self.collision_layer
 	params.collide_with_bodies = true
 	params.collide_with_areas = true
-	
+
 	var result = self.__direct_space_state.intersect_shape(params, 1)
 	return result.size() > 0
