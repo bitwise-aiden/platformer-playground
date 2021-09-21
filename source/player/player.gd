@@ -15,9 +15,9 @@ onready var __input: PlayerInput = $input
 
 func _ready() -> void:
 	var animation = $animation
-	animation.direction = funcref(self.__input, "direction")
-	animation.is_move = funcref(self.__input, "is_move")
-	animation.on_ground = funcref(self, "on_ground")
+	animation.direction.attach(self.__input, "direction")
+	animation.is_move.attach(self.__input, "is_move")
+	animation.on_ground.attach(self, "on_ground")
 
 
 func _physics_process(delta: float) -> void:

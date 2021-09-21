@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "Dependency",
+"language": "GDScript",
+"path": "res://source/utils/dependency.gd"
+}, {
+"base": "Reference",
 "class": "InputBuffer",
 "language": "GDScript",
 "path": "res://source/utils/input_buffer.gd"
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://source/player/input.gd"
 } ]
 _global_script_class_icons={
+"Dependency": "",
 "InputBuffer": "",
 "Player": "",
 "PlayerAnimation": "",
