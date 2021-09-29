@@ -8,6 +8,7 @@ export(Shape2D) var vertical_collision_area: Shape2D
 
 var player_position: Dependency = Dependency.new(Vector2.ZERO)
 
+var __on_ceiling: bool = false
 var __on_ground: bool = false
 var __on_wall: bool = false
 var __on_wall_left: bool = false
@@ -19,6 +20,10 @@ onready var __direct_space_state = self.get_world_2d().direct_space_state
 # Lifecycle methods
 
 func _physics_process(delta: float) -> void:
+	self.__on_ceiling = self.__check_collision(
+		Vector2(0.0, -self.extents.y),
+		self.horizontal_collision_area
+	)
 	self.__on_ground = self.__check_collision(
 		Vector2(0.0, self.extents.y),
 		self.horizontal_collision_area
@@ -35,6 +40,10 @@ func _physics_process(delta: float) -> void:
 
 
 # Public methods
+
+func on_ceiling() -> bool:
+	return self.__on_ceiling
+
 
 func on_ground() -> bool:
 	return self.__on_ground
