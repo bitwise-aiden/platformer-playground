@@ -9,7 +9,7 @@ var __elapsed: float =.0
 
 # Lifecycle methods
 
-func _init(name: String, buffer: float = .25) -> void:
+func _init(name: String, buffer: float = .15) -> void:
 	self.__name = name
 
 	self.__buffer = buffer
