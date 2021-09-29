@@ -28,6 +28,9 @@ func _physics_process(delta: float) -> void:
 
 	var velocity: Vector2 = self.__input.movement_horizontal() * self.speed
 
+	if self.__collision.on_ceiling() && self.__jump_velocity.y < 0.0:
+		self.__jump_velocity = Vector2.ZERO
+
 	if !self.__collision.on_ground():
 		self.__jump_velocity += Vector2.DOWN * self.gravity
 
