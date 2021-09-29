@@ -1,11 +1,10 @@
 class_name PlayerCollision extends Node2D
 
 
-export(Vector2) var ground_offset: Vector2
-export(Vector2) var wall_left_offest: Vector2
-export(Vector2) var wall_right_offset: Vector2
-export(Shape2D) var collision_area: Shape2D
 export(int, LAYERS_2D_PHYSICS) var collision_layer: int
+export(Vector2) var extents: Vector2
+export(Shape2D) var horizontal_collision_area: Shape2D
+export(Shape2D) var vertical_collision_area: Shape2D
 
 var player_position: Dependency = Dependency.new(Vector2.ZERO)
 
@@ -20,9 +19,18 @@ onready var __direct_space_state = self.get_world_2d().direct_space_state
 # Lifecycle methods
 
 func _physics_process(delta: float) -> void:
-	self.__on_ground = self.__check_collision(self.ground_offset)
-	self.__on_wall_left = self.__check_collision(self.wall_left_offest)
-	self.__on_wall_right = self.__check_collision(self.wall_right_offset)
+	self.__on_ground = self.__check_collision(
+		Vector2(0.0, self.extents.y),
+		self.horizontal_collision_area
+	)
+	self.__on_wall_left = self.__check_collision(
+		Vector2(-self.extents.x, 0.0),
+		self.vertical_collision_area
+	)
+	self.__on_wall_right = self.__check_collision(
+		Vector2(self.extents.x, 0.0),
+		self.vertical_collision_area
+	)
 	self.__on_wall = self.__on_wall_left || self.__on_wall_right
 
 
@@ -46,9 +54,9 @@ func on_wall_right() -> bool:
 
 # Private methods
 
-func __check_collision(offset: Vector2) -> bool:
+func __check_collision(offset: Vector2, collision_area: Shape2D) -> bool:
 	var params = Physics2DShapeQueryParameters.new()
-	params.set_shape(self.collision_area)
+	params.set_shape(collision_area)
 	params.transform = Transform2D(
 		0.0,
 		self.player_position.value + offset
