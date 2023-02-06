@@ -2,27 +2,27 @@ class_name Dependency
 
 
 var __default
-var __dependency: FuncRef
+var __dependency: Callable
 
 
 # Lifecycle methods
 
-func _init(default = null) -> void:
-	self.__default = default
+func _init(default = null):
+	__default = default
 
 
 # Accessor methods
 
-var value = null setget , get_value
+var value = null : get = get_value
 
 func get_value():
-	if self.__dependency && self.__dependency.is_valid():
-		return self.__dependency.call_func()
+	if __dependency != null && __dependency.is_valid():
+		return __dependency.call()
 
-	return self.__default
+	return __default
 
 
 # Public methods
 
-func attach(instance, funcname: String) -> void:
-	self.__dependency = funcref(instance, funcname)
+func attach(dependency: Callable) -> void:
+	__dependency = dependency

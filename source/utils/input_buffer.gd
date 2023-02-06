@@ -9,20 +9,20 @@ var __elapsed: float =.0
 
 # Lifecycle methods
 
-func _init(name: String, buffer: float = .15) -> void:
-	self.__name = name
+func _init(name: String,buffer: float = .15):
+	__name = name
 
-	self.__buffer = buffer
+	__buffer = buffer
 
 
 # Public methods
 
 func triggered() -> bool:
-	return self.__elapsed > 0.0
+	return __elapsed > 0.0
 
 
 func process(delta: float) -> void:
-	self.__elapsed = max(0.0, self.__elapsed - delta)
+	__elapsed = max(0.0, __elapsed - delta)
 
-	if Input.is_action_just_pressed(self.__name):
-		self.__elapsed = self.__buffer
+	if Input.is_action_just_pressed(__name):
+		__elapsed = __buffer

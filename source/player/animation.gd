@@ -1,4 +1,4 @@
-class_name PlayerAnimation extends AnimatedSprite
+class_name PlayerAnimation extends AnimatedSprite2D
 
 
 var direction: Dependency = Dependency.new(1)
@@ -9,17 +9,17 @@ var is_move: Dependency = Dependency.new(false)
 # Lifecycle methods
 
 func _physics_process(_delta: float) -> void:
-	self.flip_h = self.direction.value == -1
+	flip_h = direction.value == -1
 
 	var state = [
-		self.on_ground.value,
-		self.is_move.value
+		on_ground.value,
+		is_move.value
 	]
 
 	match state:
 		[true, true]:
-			self.play("move")
+			play("move")
 		[false, ..]:
-			self.play("jump")
+			play("jump")
 		_:
-			self.play("idle")
+			play("idle")
